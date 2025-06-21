@@ -492,10 +492,10 @@ class Client {
                                 OJS.emit("update", OJS.players[i]);
                             }
                         };
-
                         // Pixels
                         let off = 2 + data.getUint8(1) * 16;
                         for (let i = data.getUint16(off, true), j = 0; j < i; j++) {
+			    let id = data.getUint32(2+off+j*15,true);
                             let
                                 x = data.getInt32(2 + off + j * 15 + 4, true),
                                 y = data.getInt32(2 + off + j * 15 + 8, true);
@@ -504,7 +504,7 @@ class Client {
                                 g = data.getUint8(2 + off + j * 15 + 13),
                                 b = data.getUint8(2 + off + j * 15 + 14);
 
-                            OJS.emit('pixel', x, y, [r, g, b]);
+                            OJS.emit('pixel', id, x, y, [r, g, b]);
                             Chunks.setPixel(x, y, [r, g, b]);
                         }
 
@@ -543,6 +543,7 @@ class Client {
                     case OJS.options.opcode.setRank: {
                         OJS.player.rank = data.getUint8(1);
                         OJS.emit("rank", data.getUint8(1));
+			OJS.net.bucket.infinite=OJS.player.rank===3;
                         break;
                     }
                     case OJS.options.opcode.captcha: {

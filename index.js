@@ -599,6 +599,11 @@ class Client {
                 }
             },
             messageHandler(data) {
+		try{
+			const json = JSON.parse(data);
+			OJS.emit('jsonMessage', json);
+			if(json.data.message) OJS.util.log(`${chalk.blueBright(json.data.message)}`);
+		}catch(e){}
                 if(typeof data !== "string") return console.error(chalk.red("Client.net.messageHandler: data is not string."));
                 if(data.startsWith("You are banned")) {
                     OJS.util.log(chalk.red("Got ban message."));

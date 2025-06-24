@@ -1,6 +1,6 @@
 {
   "name": "nm-owop-js",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "The OWOP (ourworldofpixels) API. | This package includes some small fixes not present in the original.",
   "main": "index.js",
   "scripts": {},

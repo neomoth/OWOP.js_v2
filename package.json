@@ -24,7 +24,7 @@
   "homepage": "https://github.com/neomoth/OWOP.js_v2#readme",
   "dependencies": {
     "chalk": "^3.0.0",
-    "ws": "^7.2.0"
+    "ws": "^8.18.2"
   },
   "publishConfig_g": {
     "registry": "https://npm.pkg.github.com/"
